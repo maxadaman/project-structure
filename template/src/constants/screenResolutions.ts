@@ -1,0 +1,10 @@
+export const smallMobile = 320;
+export const mobile = 568;
+export const mobileHorizontal = 640;
+export const smartScreen = 667;
+export const tablet = 960;
+export const iPadVertical = 768;
+export const iPad = 1024;
+export const tinyDesktop = 1152;
+export const halfHD = 1440;
+export const fullHD = 1920;

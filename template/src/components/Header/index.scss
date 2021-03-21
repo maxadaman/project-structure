@@ -1,0 +1,16 @@
+@import 'styles/variables/grid';
+@import 'styles/variables/colors';
+
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: $mobileHeaderHeight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: $black;
+  background-color: $white;
+  box-shadow: 0px 4px 20px -10px $black;
+}

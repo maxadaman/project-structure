@@ -1,0 +1,126 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/screenResolutions';
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalMove {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.ModalPortal {
+  z-index: 888;
+  position: relative;
+
+  .ReactModal__Overlay {
+    justify-content: center;
+    overflow: hidden;
+    padding: 40px 0;
+    animation-name: modalFade;
+    animation-duration: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 9;
+    background: rgba($black, 0.8) !important;
+  }
+
+  .modal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    outline: none;
+    position: absolute;
+    top: 32px;
+    right: 20px;
+    cursor: pointer;
+    border: 0;
+
+    i {
+      font-size: 20px;
+      color: $shadowedSteel;
+
+      &:before {
+        margin: 0;
+      }
+    }
+  }
+
+  .ReactModal__Content {
+    background-color: $black !important;
+    animation-name: modalMove;
+    animation-duration: 0.3s;
+    width: 560px;
+    display: inline-block;
+    margin: 0 auto;
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    right: auto !important;
+    position: relative !important;
+    overflow: visible !important;
+    box-shadow: 2px 2px 20px rgba($black, 0.6);
+    border: none !important;
+    @media screen and (max-width: $iPadVertical) {
+      width: 380px;
+    }
+
+    h2 {
+      font-weight: 500;
+      color: $black;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .modal-info {
+      width: auto;
+    }
+  }
+
+  &--big {
+    .ReactModal__Content {
+      width: 1260px;
+      padding: 37px 66px 29px 42px !important;
+    }
+    .modal-close {
+      right: 42px;
+      i {
+        font-size: 34px;
+      }
+    }
+  }
+
+  &--small {
+    .ReactModal__Content {
+      width: 380px;
+      padding: 0 !important;
+    }
+  }
+
+  &--without-padding .ReactModal__Content {
+    padding: 0 !important;
+  }
+
+  &--dark .ReactModal__Content {
+    background-color: $mineShaft !important;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .ModalPortal .ReactModal__Content {
+    width: 90%;
+  }
+}

@@ -1,0 +1,9 @@
+export const AUTHENTICATED = 'Auth/AUTHENTICATED';
+export const UNAUTHENTICATED = 'Auth/UNAUTHENTICATED';
+export const AUTHENTICATION_ERROR = 'Auth/AUTHENTICATION_ERROR';
+export const PAGE_LOADED = 'Auth/PAGE_LOADED';
+export const REGISTERED = 'Auth/REGISTERED';
+export const FORGOT_PASSWORD = 'Auth/FORGOT_PASSWORD';
+export const RESET_PASSWORD = 'Auth/RESET_PASSWORD';
+export const CLEAR_ERROR = 'Auth/CLEAR_ERROR';
+export const CLEAR_DATA = 'Auth/CLEAR_DATA';

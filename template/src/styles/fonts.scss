@@ -1,0 +1,12 @@
+@import 'mixins/fonts';
+
+/* 
+Template
+@include font-face('Circe', './fonts/Circe/Circe-ExtraLight', 100, normal);
+*/
+
+@include font-face('Circe', './fonts/Circe/Circe-ExtraLight', 100, normal);
+@include font-face('Circe', './fonts/Circe/Circe-Light', 300, normal);
+@include font-face('Circe', './fonts/Circe/Circe-Regular');
+@include font-face('Circe', './fonts/Circe/Circe-Bold', 700, normal);
+@include font-face('Circe', './fonts/Circe/Circe-ExtraBold', 900, normal);

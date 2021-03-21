@@ -1,0 +1,135 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/grid';
+@import 'styles/variables/screenResolutions';
+
+.sidebar-wrp {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 200;
+  transform: translateX(100%);
+  transition: opacity ease-in 0.2s;
+
+  &--open {
+    opacity: 1;
+    transform: none;
+
+    .sidebar-wrp__overlay {
+      background: rgba($greyChateau, 0.7);
+    }
+
+    .sidebar-wrp__container {
+      transform: none;
+    }
+  }
+
+  &--close {
+    opacity: 0;
+    transition: opacity ease-in 0.2s, transform ease-in 0.2s 0.2s;
+  }
+
+  &__close-btn {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 16px;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 51;
+    background: transparent;
+    transition: background ease-in 0.15s;
+  }
+
+  &__container {
+    position: absolute;
+    width: 500px;
+    max-width: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 52;
+    will-change: transform;
+    transform: translateX(100%);
+    transition: all ease-in 0.2s 0.15s;
+  }
+
+  &__header {
+    height: $laptopHeaderHeight;
+    border-bottom: 1px solid $greyChateau;
+    padding: 0 $gap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $white;
+  }
+
+  &__main {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: calc(100vh - #{$laptopHeaderHeight});
+    max-height: calc(100vh - #{$laptopHeaderHeight});
+    padding: 30px 15px 30px 30px;
+    background: $desiredDawn;
+    overflow: hidden auto;
+
+  @media screen and (min-width: $iPad) {
+    &::-webkit-scrollbar {
+      width: 5px;
+      border: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $digital;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: $digital;
+    }
+  }
+
+  &-content {
+    max-height: calc(100vh - 270px);
+    overflow: auto;
+    padding-right: 15px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      border: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $digital;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: $digital;
+      }
+    }
+
+    &-buttons {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      width: 450px;
+    }
+  }
+}

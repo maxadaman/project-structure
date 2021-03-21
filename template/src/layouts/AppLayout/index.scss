@@ -1,0 +1,6 @@
+@import 'styles/variables/grid.scss';
+
+.main-wrp {
+  min-height: calc(100vh - 120px);
+  padding-top: $mobileHeaderHeight;
+}

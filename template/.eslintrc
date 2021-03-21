@@ -1,0 +1,82 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "standard"
+  ],
+  "plugins": ["react", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "arrow-parens": ["error", "as-needed"],
+    "camelcase": 0,
+    "indent": ["error", 2],
+    "implicit-arrow-linebreak": 0,
+    "import/prefer-default-export": 0,
+    "linebreak-style": 0,
+    "object-curly-newline": ["error", { "multiline": true }],
+    "react/no-unescaped-entities": 0,
+    "semi": 0,
+    "no-unused-vars": 1,
+    "import/no-unresolved": 0,
+    "no-underscore-dangle": 0,
+    "class-methods-use-this": 0,
+    "comma-style": ["error", "last"],
+    "no-use-before-define": 0,
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": true, "classes": true }],
+    "no-useless-escape": 0,
+    "no-unneeded-ternary": "error",
+    "spaced-comment": ["error", "always", { "exceptions": ["-"] }],
+    "jsx-a11y/no-onchange": 0,
+    "react/no-array-index-key": 0,
+    "import/no-cycle": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-curly-brace-presence": 0,
+    "curly": ["error", "multi"],
+    "import/no-extraneous-dependencies": 0,
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
+    "no-shadow": 0,
+    "@typescript-eslint/no-shadow": ["error", { "ignoreTypeValueShadow": true }],
+    "react/destructuring-assignment": [
+      2,
+      "always",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "react/state-in-constructor": [1, "never"],
+    "react/sort-comp": [
+      2,
+      {
+        "order": ["static-methods", "static-variables", "instance-variables", "lifecycle", "everything-else", "render"]
+      }
+    ]
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "indexedDB": true,
+    "localStorage": true,
+    "sessionStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  }
+}
