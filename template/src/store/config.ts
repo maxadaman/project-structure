@@ -1,15 +1,16 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
 
-let configureStore: any = {};
+const middleware = getDefaultMiddleware({
+  immutableCheck: false,
+  serializableCheck: false,
+  thunk: true
+});
 
-if (process.env.NODE_ENV === 'production') configureStore = createStore(
-  rootReducer, {}, compose(applyMiddleware(thunkMiddleware)));
-else {
-  const composeEnhancers: any = (window &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-  configureStore = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
-}
+const store = configureStore({
+  reducer: rootReducer,
+  middleware,
+  devTools: process.env.NODE_ENV !== 'production'
+});
 
-export default configureStore;
+export default store;

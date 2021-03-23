@@ -17,7 +17,6 @@ export interface IChangeMobileMenu {
   type: typeof MOBILE_MENU_CHANGES
 }
 
-// TODO: error type!!!!!!!!!!!
 export interface IError {
   type: typeof GLOBAL_ERROR,
   payload: IApiError

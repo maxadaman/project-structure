@@ -3,16 +3,14 @@ import './index.scss';
 
 interface IProfileInfoProps {
   sidebarProps: {
-    firstName: string;
-    lastName: string
+    address: string
   }
 }
 
-const ProfileInfo: React.FC<IProfileInfoProps> = ({ sidebarProps: { firstName, lastName } }) => {
+const ProfileInfo: React.FC<IProfileInfoProps> = ({ sidebarProps: { address } }) => {
   return (
     <div className={'profile-info__wrp'}>
-      <p className={'profile-info__field'}>{firstName}</p>
-      <p className={'profile-info__field'}>{lastName}</p>
+      <p className={'profile-info__field'}>{address}</p>
     </div>
   )
 };

@@ -1,2 +1,2 @@
-export const SHOW_MODAL = 'Modal/SHOW_MODAL';
-export const HIDE_MODAL = 'Modal/HIDE_MODAL';
+export const OPEN_MODAL = 'Modal/OPEN_MODAL';
+export const CLOSE_MODAL = 'Modal/CLOSE_MODAL';

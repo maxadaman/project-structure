@@ -1,6 +1,6 @@
 import * as types from './types';
-// import { createReducer } from 'store/utils/createReducer';
-import { IAuthState, AuthActionCreatorType } from './interfaces';
+import { createReducer } from '@reduxjs/toolkit';
+import { IAuthState, IError } from './interfaces';
 
 const initialState: IAuthState = {
   isLoaded: false,
@@ -14,88 +14,44 @@ const initialState: IAuthState = {
   error: null
 };
 
-// const authReducer =  createReducer<IAuthState, AuthActionType, AuthActionCreatorType>(initialState, {
-//   [types.PAGE_LOADED]: (state) => ({
-//     ...state,
-//     isLoaded: true
-//   }),
-//   [types.AUTHENTICATED]: (state) => ({
-//     ...state,
-//     isLogin: true
-//   }),
-//   [types.UNAUTHENTICATED]: (state) => ({
-//     ...state,
-//     isLogin: false
-//   }),
-//   [types.REGISTERED]: (state) => ({
-//     ...state,
-//     isRegister: true
-//   }),
-//   [types.FORGOT_PASSWORD]: (state) => ({
-//     ...state,
-//     isForgotPassword: true
-//   }),
-//   [types.RESET_PASSWORD]: (state) => ({
-//     ...state,
-//     isResetPassword: true
-//   }),
-//   [types.AUTHENTICATION_ERROR]: (state, action: IError) => ({
-//     ...state,
-//     isError: true,
-//     error: action
-//   }),
-//   [types.CLEAR_ERROR]: (state) => ({
-//     ...state,
-//     isError: false
-//   }),
-//   [types.CLEAR_DATA]: (state) => ({
-//     ...state,
-//     ...initialState
-//   })
-// });
-
-const authReducer = (state = initialState, action: AuthActionCreatorType): IAuthState => {
-  switch (action.type) {
-  case types.PAGE_LOADED: return {
+const authReducer = createReducer(initialState, {
+  [types.PAGE_LOADED]: state => ({
     ...state,
     isLoaded: true
-  };
-  case types.AUTHENTICATED: return {
+  }),
+  [types.AUTHENTICATED]: state => ({
     ...state,
     isLogin: true
-  };
-  case types.UNAUTHENTICATED: return {
+  }),
+  [types.UNAUTHENTICATED]: state => ({
     ...state,
     isLogin: false
-  };
-  case types.REGISTERED: return {
+  }),
+  [types.REGISTERED]: state => ({
     ...state,
     isRegister: true
-  };
-  case types.FORGOT_PASSWORD: return {
+  }),
+  [types.FORGOT_PASSWORD]: state => ({
     ...state,
     isForgotPassword: true
-  };
-  case types.RESET_PASSWORD: return {
+  }),
+  [types.RESET_PASSWORD]: state => ({
     ...state,
     isResetPassword: true
-  };
-  case types.AUTHENTICATION_ERROR: return {
+  }),
+  [types.AUTHENTICATION_ERROR]: (state, { payload }: IError) => ({
     ...state,
     isError: true,
-    error: action.payload
-  };
-  case types.CLEAR_ERROR: return {
+    error: payload
+  }),
+  [types.CLEAR_ERROR]: state => ({
     ...state,
     isError: false
-  };
-  case types.CLEAR_DATA: return {
+  }),
+  [types.CLEAR_DATA]: state => ({
     ...state,
     ...initialState
-  };
-  default:
-    return state
-  }
-};
+  })
+});
 
 export default authReducer;

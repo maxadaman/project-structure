@@ -1,36 +1,37 @@
 import React from 'react';
-import { AvatarContext } from 'context/UserAvatarContext';
+import OfficeContext from 'context/OfficeContext';
 import ProfileInfo from 'components/ProfileInfo';
 import ModalInfo from 'components/ModalInfo';
-import AvatarCard from 'components/AvatarCard';
+import Location from 'components/Location';
 import { IHomePageProps } from './types';
 import { icons } from 'constants/icons';
 import './index.scss';
 
 const { menu } = icons;
 
-const HomePage: React.FC<IHomePageProps> = ({ openSidebar, toOpen }) => {
+const HomePage: React.FC<IHomePageProps> = ({ openSidebar, openModal }) => {
   const handleProfileInfo = (): void => {
-    openSidebar(ProfileInfo, { title: 'Profile info', firstName: 'Test', lastName: 'Test 1' });
+    openSidebar(ProfileInfo, { title: 'Profile info', address: 'Metrotech Center, Brooklyn, NY 11201, USA' });
   };
-  const handleProfileModal = ():void => {
-    toOpen(ModalInfo, { title: 'test' });
-  };
-  const handleAvatar = (): void => {
-    console.warn(123123);
+  const handleProfileModal = (): void => {
+    openModal(ModalInfo, { title: 'Profile info', description: 'Metrotech Center, Brooklyn, NY 11201, USA' });
   };
   return (
     <div className={'home-page'}>
-      <h1>Home page</h1>
-      <button className={'home-page__button'} onClick={handleProfileInfo}>
-        <i className={menu}></i>
-      </button>
-      <button className={'home-page__button'} onClick={handleProfileModal}>
-        <i className={menu}></i>
-      </button>
-      <AvatarContext.Provider value={{ avatarUrl: 'test', getAvatar: handleAvatar }}>
-        <AvatarCard />
-      </AvatarContext.Provider>
+      <h1 className={'home-page__title'}>Home page</h1>
+      <div className={'home-page__example-content'}>
+        <div className={'controls-panel'}>
+          <button className={'controls-panel__button'} onClick={handleProfileInfo}>
+            Trigger Sidebar <i className={menu}></i>
+          </button>
+          <button className={'controls-panel__button'} onClick={handleProfileModal}>
+            Trigger modal <i className={menu}></i>
+          </button>
+        </div>
+        <OfficeContext.Provider value={{ address: 'Metrotech Center, Brooklyn, NY 11201, USA' }}>
+          <Location />
+        </OfficeContext.Provider>
+      </div>
     </div>
   );
 };

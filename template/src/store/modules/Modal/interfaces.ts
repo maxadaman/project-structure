@@ -1,27 +1,34 @@
 import { Nullable } from 'types/general';
 import {
-  SHOW_MODAL,
-  HIDE_MODAL
+  OPEN_MODAL,
+  CLOSE_MODAL
 } from './types';
 import React from 'react';
 
-export interface IShowModal {
-  type: typeof SHOW_MODAL;
+export interface IOpenModal {
+  type: typeof OPEN_MODAL;
   payload: Nullable<typeof React.Component>;
   width?: string;
-  props: any
+  props: modalPropsType
 }
 
-export interface IHideModal {
-  type: typeof HIDE_MODAL
+export interface ICloseModal {
+  type: typeof CLOSE_MODAL
 }
+
+export type modalPropsType = Nullable<{
+  title: string;
+  [key: string]: any
+}>;
+
+export type modalComponentType = any;
 
 export interface IModalState {
-  isOpen: boolean;
-  child: Nullable<typeof React.Component>;
+  modalOpen: boolean;
+  modalComponent: Nullable<typeof React.Component>;
   width?: string;
-  props: Nullable<{ closeEvent: () => void }>
+  props: modalPropsType
 }
 
-export type ModalActionCreatorType = IShowModal | IHideModal;
-export type ModalActionType = typeof SHOW_MODAL | typeof HIDE_MODAL;
+export type ModalActionCreatorType = IOpenModal | ICloseModal;
+export type ModalActionType = typeof OPEN_MODAL | typeof CLOSE_MODAL;
