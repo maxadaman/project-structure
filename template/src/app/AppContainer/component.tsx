@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'modularComponents/Modal';
-import { RouterPropsFromRedux } from './types';
 import ScrollToTop from 'components/ScrollToTop';
 import Router from '../Router';
+import { RouterPropsFromRedux } from './types';
 import routes from './routes';
 
 const AppContainer: React.FC<RouterPropsFromRedux> = ({ location, handleResize, checkJwt }) => {

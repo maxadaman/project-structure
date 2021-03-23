@@ -1,6 +1,6 @@
-// import { createReducer } from 'store/utils';
+import { createReducer } from '@reduxjs/toolkit';
 import * as types from './types';
-import { IGlobalState, GlobalActionCreatorType } from './interfaces';
+import { IGlobalState, IResizeWindow, IError } from './interfaces';
 import { IOffice } from 'types/about';
 
 const initialWindowWidth = window.innerWidth;
@@ -34,57 +34,29 @@ const initialState: IGlobalState = {
   error: null
 };
 
-// const globalReducer = createReducer(platformInitState)({
-//   [types.WINDOW_RESIZE]: (state: IGlobalState, { payload }: any) => ({
-//     ...state,
-//     windowWidth: payload
-//   }),
-//   [types.MOBILE_MENU_CHANGES]: (state: IGlobalState) => ({
-//     ...state,
-//     isMobileMenuOpen: !state.isMobileMenuOpen
-//   }),
-//   [types.GLOBAL_ERROR]: (state: IGlobalState, { payload }: any) => ({
-//     ...state,
-//     isError: true,
-//     error: payload
-//   }),
-//   [types.CLEAR_ERROR]: (state: IGlobalState) => ({
-//     ...state,
-//     isError: false,
-//     error: null
-//   }),
-//   [types.CLEAR_DATA]: (state: IGlobalState) => ({
-//     ...state,
-//     ...platformInitState
-//   })
-// });
-
-const globalReducer = (state = initialState, action: GlobalActionCreatorType): IGlobalState => {
-  switch (action.type) {
-  case types.WINDOW_RESIZE: return {
+const globalReducer = createReducer(initialState, {
+  [types.WINDOW_RESIZE]: (state, { payload }: IResizeWindow) => ({
     ...state,
-    windowWidth: action.payload
-  };
-  case types.MOBILE_MENU_CHANGES: return {
+    windowWidth: payload
+  }),
+  [types.MOBILE_MENU_CHANGES]: state => ({
     ...state,
     isMobileMenuOpen: !state.isMobileMenuOpen
-  };
-  case types.GLOBAL_ERROR: return {
+  }),
+  [types.GLOBAL_ERROR]: (state, { payload }: IError) => ({
     ...state,
     isError: true,
-    error: action.payload
-  };
-  case types.CLEAR_ERROR: return {
+    error: payload
+  }),
+  [types.CLEAR_ERROR]: state => ({
     ...state,
-    isError: false
-  };
-  case types.CLEAR_DATA: return {
+    isError: false,
+    error: null
+  }),
+  [types.CLEAR_DATA]: state => ({
     ...state,
     ...initialState
-  };
-  default:
-    return state
-  }
-};
+  })
+});
 
 export default globalReducer;

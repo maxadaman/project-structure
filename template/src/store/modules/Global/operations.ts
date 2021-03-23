@@ -1,11 +1,11 @@
-import { ThunkOperationType } from 'types/general';
-import { IGlobalState } from './interfaces';
 import {
   toResizeWindow,
   toChangeMobileMenu,
   toClearError,
   toClearData
 } from './actions';
+import { ThunkOperationType } from 'types/general';
+import { IGlobalState } from './interfaces';
 
 export const handleResize = ()
 : ThunkOperationType<void, IGlobalState> => async dispatch => {

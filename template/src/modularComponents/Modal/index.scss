@@ -37,6 +37,14 @@
     background: rgba($black, 0.8) !important;
   }
 
+  .modal-title {
+    margin: 0 0 25px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: normal;
+    color: $greyChateau;
+  }
+
   .modal-close {
     display: flex;
     justify-content: center;

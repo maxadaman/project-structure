@@ -1,10 +1,10 @@
 import * as types from './types';
-import { ModalActionCreatorType } from './interfaces';
+import { ModalActionCreatorType, modalPropsType, modalComponentType } from './interfaces';
 
-export const toOpen = (node: any, props: any): ModalActionCreatorType => ({
-  type: types.SHOW_MODAL,
-  payload: node,
+export const toOpenModal = (component: modalComponentType, props: modalPropsType): ModalActionCreatorType => ({
+  type: types.OPEN_MODAL,
+  payload: component,
   props
 });
 
-export const toClose = (): ModalActionCreatorType => ({ type: types.HIDE_MODAL });
+export const toCloseModal = (): ModalActionCreatorType => ({ type: types.CLOSE_MODAL });

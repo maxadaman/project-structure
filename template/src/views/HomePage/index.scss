@@ -1,14 +1,30 @@
+@import 'styles/variables/grid';
+@import 'styles/variables/colors';
+
 .home-page {
   width: 100%;
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  h1 {
+  &__title {
     margin-top: 25vh;
   }
 
-  .button {
-    margin-top: 25vh;
+  &__example-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .controls-panel {
+      margin: $gap 0;
+
+      &__button {
+        margin: 0 $gutter;
+        padding: 5px;
+      }
+    }
   }
 }

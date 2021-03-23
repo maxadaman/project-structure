@@ -1,6 +1,6 @@
+import { toOpenSidebar, toCloseSidebar } from './actions';
 import { ThunkOperationType } from 'types/general';
 import { ISidebarState, sidebarPropsType, sidebarComponentType } from './interfaces';
-import { toOpenSidebar, toCloseSidebar } from './actions';
 
 export const openSidebar = (component: sidebarComponentType, props: sidebarPropsType)
   : ThunkOperationType<void, ISidebarState> => async dispatch => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 import rootReducer from 'store/reducers';
-import configureStore from 'store/config';
+import store from 'store/config';
 
 export type Nullable<T> = T | null;
 
@@ -18,7 +18,7 @@ export interface IRoute {
 
 export type ThunkOperationType<Response, State> = ThunkAction<Response, State, unknown, Action<string>>;
 export type RootStateType = ReturnType<typeof rootReducer>;
-export type DispatchType = typeof configureStore.dispatch;
+export type DispatchType = typeof store.dispatch;
 
 // Errors
 

@@ -3,28 +3,25 @@ import './index.scss';
 
 interface IModalProps {
   modalProps: {
-    title: string,
     description: string,
     btnText: string,
-    toClose: () => void,
+    closeModal: () => void,
     closeEvent: () => void
   }
 }
 
 const ModalInfo: React.FC<IModalProps> = ({
   modalProps: {
-    title,
     description,
     btnText,
-    toClose,
+    closeModal,
     closeEvent
   }
 }) => (
   <div className={'modal-info'}>
-    <h3>{title}</h3>
-    <div>{description}</div>
-    <button type={'button'} className={'btn-secondary'} onClick={() => (closeEvent ? closeEvent() : toClose())}>
-      {btnText}
+    <p>{description}</p>
+    <button type={'button'} className={'btn-secondary'} onClick={() => (closeEvent ? closeEvent() : closeModal())}>
+      {btnText || 'Close'}
     </button>
   </div>
 );

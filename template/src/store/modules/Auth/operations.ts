@@ -1,5 +1,6 @@
 import request from 'utils/request';
-import { IAuthState } from './interfaces';
+import { setToken, removeToken, getToken } from 'utils/token';
+import { errorHandler } from 'utils/errorHandlers';
 import {
   toLogin,
   toLoadPage,
@@ -12,8 +13,7 @@ import {
   toClearData
 } from './actions';
 import { ThunkOperationType } from 'types/general';
-import { setToken, removeToken, getToken } from 'utils/token';
-import { errorHandler } from 'utils/errorHandlers';
+import { IAuthState } from './interfaces';
 
 export const login = (userData: any, remember?: boolean)
   : ThunkOperationType<void, IAuthState> => async dispatch => {
