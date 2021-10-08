@@ -1,6 +1,6 @@
 {
-  "endOfLine": "lf",
-  "printWidth": 140,
+  "endOfLine": "auto",
+  "printWidth": 120,
   "singleQuote": true,
   "bracketSpacing": true,
   "tabWidth": 2,

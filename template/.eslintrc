@@ -3,9 +3,10 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
     "standard"
   ],
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -22,15 +23,31 @@
     "jest": true
   },
   "rules": {
+    "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "arrow-parens": ["error", "as-needed"],
     "camelcase": 0,
-    "indent": ["error", 2],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "flatTernaryExpressions": true,
+        "offsetTernaryExpressions": true,
+        "ignoredNodes": [
+          "ConditionalExpression",
+          "BinaryExpression",
+          "MemberExpression",
+          "ObjectExpression",
+          "flatTernaryExpressions"
+        ]
+      }
+    ],
     "implicit-arrow-linebreak": 0,
     "import/prefer-default-export": 0,
     "linebreak-style": 0,
-    "object-curly-newline": ["error", { "multiline": true }],
+    "object-curly-newline": 0,
     "react/no-unescaped-entities": 0,
     "semi": 0,
     "no-unused-vars": 1,
@@ -40,6 +57,8 @@
     "comma-style": ["error", "last"],
     "no-use-before-define": 0,
     "@typescript-eslint/no-use-before-define": ["error", { "functions": true, "classes": true }],
+    "space-before-function-paren": ["error", { "anonymous": "always", "named": "never", "asyncArrow": "always" }],
+    "generator-star-spacing": ["error", { "before": true, "after": false }],
     "no-useless-escape": 0,
     "no-unneeded-ternary": "error",
     "spaced-comment": ["error", "always", { "exceptions": ["-"] }],
@@ -52,6 +71,8 @@
     "import/no-extraneous-dependencies": 0,
     "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
     "no-shadow": 0,
+    "no-mixed-spaces-and-tabs": 0,
+    "no-extra-boolean-cast": 0,
     "@typescript-eslint/no-shadow": ["error", { "ignoreTypeValueShadow": true }],
     "react/destructuring-assignment": [
       2,
