@@ -15,59 +15,63 @@ import {
 import { ThunkOperationType } from 'types/general';
 import { IAuthState } from './interfaces';
 
-export const login = (userData: any, remember?: boolean)
-  : ThunkOperationType<void, IAuthState> => async dispatch => {
-  try {
-    dispatch(toClearError());
-    const { data } = await request.post('/api/login', userData, { notAuthorizeHeader: true });
-    setToken(data.token, remember);
-    dispatch(toLogin());
-  } catch (err) {
-    errorHandler(err, dispatch, toError);
-  }
-};
+/* eslint-disable */
 
-export const signUp = (userData: any)
-  : ThunkOperationType<void, IAuthState> => async dispatch => {
-  try {
-    dispatch(toClearError());
-    await request.post('/api/register', userData, { notAuthorizeHeader: true });
-    dispatch(toRegister());
-  } catch (err) {
-    errorHandler(err, dispatch, toError);
-  }
-};
+const login =
+  (userData: any, remember?: boolean): ThunkOperationType<void, IAuthState> =>
+  async dispatch => {
+    try {
+      dispatch(toClearError());
+      const { data } = await request.post('/api/login', userData, { notAuthorizeHeader: true });
+      setToken(data.token, remember);
+      dispatch(toLogin());
+    } catch (err) {
+      errorHandler(err, dispatch, toError);
+    }
+  };
 
-export const forgotPassword = (passwordData: any)
-  : ThunkOperationType<void, IAuthState> => async dispatch => {
-  try {
-    dispatch(toClearError());
-    await request.post('/api/reset-request', passwordData, { notAuthorizeHeader: true });
-    dispatch(toForgotPassword());
-  } catch (err) {
-    errorHandler(err, dispatch, toError);
-  }
-};
+export const signUp =
+  (userData: any): ThunkOperationType<void, IAuthState> =>
+  async dispatch => {
+    try {
+      dispatch(toClearError());
+      await request.post('/api/register', userData, { notAuthorizeHeader: true });
+      dispatch(toRegister());
+    } catch (err) {
+      errorHandler(err, dispatch, toError);
+    }
+  };
 
-export const resetPassword = (passwordData: any)
-  : ThunkOperationType<void, IAuthState> => async dispatch => {
-  try {
-    dispatch(toClearError());
-    await request.post('/api/reset', passwordData, { notAuthorizeHeader: true });
-    dispatch(toResetPassword());
-  } catch (err) {
-    errorHandler(err, dispatch, toError);
-  }
-};
+export const forgotPassword =
+  (passwordData: any): ThunkOperationType<void, IAuthState> =>
+  async dispatch => {
+    try {
+      dispatch(toClearError());
+      await request.post('/api/reset-request', passwordData, { notAuthorizeHeader: true });
+      dispatch(toForgotPassword());
+    } catch (err) {
+      errorHandler(err, dispatch, toError);
+    }
+  };
 
-export const logout = ()
-  : ThunkOperationType<void, IAuthState> => dispatch => {
+export const resetPassword =
+  (passwordData: any): ThunkOperationType<void, IAuthState> =>
+  async dispatch => {
+    try {
+      dispatch(toClearError());
+      await request.post('/api/reset', passwordData, { notAuthorizeHeader: true });
+      dispatch(toResetPassword());
+    } catch (err) {
+      errorHandler(err, dispatch, toError);
+    }
+  };
+
+export const logout = (): ThunkOperationType<void, IAuthState> => dispatch => {
   removeToken();
   dispatch(toLogout());
 };
 
-export const checkJwt = ()
-  : ThunkOperationType<void, IAuthState> => async dispatch => {
+export const checkJwt = (): ThunkOperationType<void, IAuthState> => async dispatch => {
   const { token } = getToken();
   if (!token) return dispatch(toLoadPage());
   dispatch(toLogin());
@@ -75,7 +79,6 @@ export const checkJwt = ()
   return true;
 };
 
-export const clearAuth = ()
-  : ThunkOperationType<void, IAuthState> => async dispatch => {
+export const clearAuth = (): ThunkOperationType<void, IAuthState> => async dispatch => {
   dispatch(toClearData());
 };

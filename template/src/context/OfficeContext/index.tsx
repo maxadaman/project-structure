@@ -1,19 +1,17 @@
 import React from 'react';
 
 type IOfficeContextProps = {
-  address: string
-}
+  address: string;
+};
 
 const OfficeContext = React.createContext<Partial<IOfficeContextProps>>({});
 
-export const withOfficeContext = <P, >(Component: React.ComponentType<P>): React.ReactNode =>
+export const withOfficeContext = <P, M>(Component: React.ComponentType<P>): React.ReactNode =>
   class ComponentWithOfficeContext extends React.Component<P & IOfficeContextProps> {
-    render () {
+    render() {
       return (
         <OfficeContext.Consumer>
-          {({ address }) => (
-            <Component {...this.props as P} address={address} />
-          )}
+          {({ address }) => <Component {...(this.props as P)} address={address} />}
         </OfficeContext.Consumer>
       );
     }
